@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day 7.1：Java 全栈启航 - 双仓库建立与工程化初始化</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --java-red: #f85149;
+            --bg-dark: #0d1117;
+            --card-dark: #161b22;
+            --text-gray: #8b949e;
+        }
+        body { font-family: 'Segoe UI', sans-serif; background: var(--bg-dark); color: #c9d1d9; line-height: 1.7; max-width: 900px; margin: 0 auto; padding: 40px 20px; }
+        .header { border-bottom: 2px solid var(--java-red); padding-bottom: 20px; margin-bottom: 40px; }
+        h1 { color: #f0f6fc; font-size: 1.8rem; }
+        h2 { color: var(--java-red); margin-top: 35px; border-left: 4px solid var(--java-red); padding-left: 15px; }
+        .info-card { background: var(--card-dark); border: 1px solid #30363d; padding: 25px; border-radius: 12px; margin: 20px 0; }
+        .command-box { background: #000; color: #58a6ff; padding: 15px; border-radius: 6px; font-family: 'Fira Code', monospace; font-size: 0.9rem; border: 1px solid #30363d; margin: 15px 0; overflow-x: auto; }
+        .badge { background: var(--java-red); color: white; padding: 3px 10px; border-radius: 4px; font-size: 0.8rem; font-weight: bold; }
+        .comparison-table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+        .comparison-table th, .comparison-table td { border: 1px solid #30363d; padding: 12px; text-align: left; }
+        .comparison-table th { background: #21262d; }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Day 7.1：Java 全栈启航 - 双仓库建立与工程化初始化</h1>
+        <p><span class="badge">架构进化</span> 记录从 Node.js 动态栈向 Spring Boot 强类型栈的工程迁移过程。</p>
+    </div>
+
+    <div class="info-card">
+        <h2>1. “双轨并行”策略 (Dual-Track Strategy)</h2>
+        <p>为了保持代码的纯净与日志的清晰，本次初始化确立了两个独立仓库：</p>
+        <ul>
+            <li><b>展示仓库 (secondweb)</b>：存放 HTML 静态日志，托管于 <code>second.yushenchuanmei.top</code>。</li>
+            <li><b>代码仓库 (sms-java)</b>：存放 Spring Boot + Maven 源代码，作为生产力核心。</li>
+        </ul>
+    </div>
+
+    
+
+    <div class="info-card">
+        <h2>2. 本地初始化与 SSH 关联</h2>
+        <p>在 <b>Acer Predator</b> 笔记本上，通过 <b>JDK 17</b> 环境启动项目，并利用已建立的 SSH 信任实现秒级同步。</p>
+        <div class="command-box">
+            # 初始化展示仓库<br>
+            git init<br>
+            git remote add origin git@github.com:sixiaopangai/secondweb.git<br>
+            git push -u origin main
+        </div>
+        <div class="command-box">
+            # 初始化 Java 系统代码仓库<br>
+            git remote add origin git@github.com:sixiaopangai/student-management-system-java.git<br>
+            git push -u origin main
+        </div>
+    </div>
+
+    <div class="info-card">
+        <h2>3. 跨语言感悟：动态 vs 静态</h2>
+        <table class="comparison-table">
+            <tr>
+                <th>维度</th>
+                <th>日志-1 (JavaScript/Node.js)</th>
+                <th>日志-2 (Java/Spring Boot)</th>
+            </tr>
+            <tr>
+                <td>类型安全</td>
+                <td>动态类型，运行才知错</td>
+                <td>强类型，编译期锁死 Bug</td>
+            </tr>
+            <tr>
+                <td>依赖管理</td>
+                <td>package.json (npm)</td>
+                <td>pom.xml (Maven)</td>
+            </tr>
+            <tr>
+                <td>工程结构</td>
+                <td>扁平灵活</td>
+                <td>严谨的 Controller/Service/Mapper 层次</td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="info-card">
+        <h2>4. 部署里程碑</h2>
+        <p>成功在 Cloudflare Pages 绑定 <b>second.yushenchuanmei.top</b>，标志着 Java 学习阶段的展示阵地正式建成。</p>
+    </div>
+
+    <p style="text-align: center;"><a href="index.html" style="color: var(--java-red); text-decoration: none;">← 返回日志-2 首页</a></p>
+</body>
+</html>

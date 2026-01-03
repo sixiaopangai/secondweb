@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🚀 全栈开发学习日志-2 (Java学习篇)</title>
+    <link rel="icon" href="https://yushenchuanmei.top/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body { 
+            font-family: 'Segoe UI', 'PingFang SC', sans-serif; 
+            line-height: 1.6; 
+            color: #e0e0e0; 
+            max-width: 850px; 
+            margin: 0 auto; 
+            padding: 40px 20px; 
+            background-color: #0d1117; /* 深色背景符合 Java 严谨风格 */
+            overflow-x: hidden;
+        }
+
+        #canvas-container {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            z-index: -1;
+            background: radial-gradient(circle at center, #161b22 0%, #0d1117 100%);
+            pointer-events: none;
+        }
+
+        .log-container { 
+            background: rgba(22, 27, 34, 0.8);
+            backdrop-filter: blur(12px);
+            padding: 40px; 
+            border-radius: 16px; 
+            border: 1px solid #30363d;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            position: relative;
+        }
+
+        h1 { 
+            color: #f0f6fc; 
+            text-align: center; 
+            border-bottom: 3px solid #f85149; /* 岩浆红装饰线 */
+            padding-bottom: 15px;
+            font-size: 1.8rem;
+            letter-spacing: 1px;
+        }
+
+        /* 准备存放 Day 7.1 的容器 */
+        .day-link { 
+            display: block; 
+            padding: 20px; 
+            margin: 20px 0; 
+            background: #161b22; 
+            border: 1px solid #30363d; 
+            border-left: 5px solid #f85149; 
+            text-decoration: none; 
+            color: #c9d1d9; 
+            border-radius: 8px; 
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
+        }
+
+        .day-link:hover { 
+            transform: scale(1.02) translateX(10px); 
+            background: #21262d; 
+            border-color: #f85149; 
+            box-shadow: 0 0 20px rgba(248, 81, 73, 0.2);
+        }
+
+        .day-title { font-weight: bold; font-size: 1.25em; display: block; color: #f85149; }
+        .day-desc { font-size: 0.95em; color: #8b949e; margin-top: 5px; }
+
+        .type-badge {
+            display: inline-block;
+            padding: 2px 10px;
+            background: #238636;
+            color: white;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            margin-bottom: 10px;
+        }
+
+        .footer-note {
+            margin-top: 50px;
+            font-size: 0.8em;
+            color: #484f58;
+            text-align: center;
+            border-top: 1px solid #30363d;
+            padding-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div id="canvas-container"></div>
+
+    <div class="log-container">
+        <h1>🚀 全栈开发学习日志-2 (Java学习篇)</h1>
+        
+        <a href="day7.1.html" class="day-link" style="border-left: 5px solid #238636; background: rgba(35, 134, 54, 0.05);">
+            <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                <div>
+                    <span class="type-badge" style="background: #238636;">
+                        <i class="fas fa-check-circle"></i> 已发布
+                    </span>
+                    <span class="day-title" style="color: #2ea043;">Day 7.1：Java 全栈启航 - 双仓库建立与工程化初始化</span>
+                </div>
+                <span style="font-size: 0.8rem; color: #8b949e;">2026.01.03</span>
+            </div>
+            <span class="day-desc">
+                在 <b>Acer Predator</b> 上确立了展示站与代码站的“双轨并行”架构；完成了从 npm 到 Maven 的依赖思维转变，并通过 SSH 成功打通 GitHub 信任隧道。
+            </span>
+            <div style="margin-top: 10px;">
+                <span style="border: 1px solid #238636; color: #238636; padding: 1px 6px; border-radius: 4px; font-size: 0.7rem;">#Architecture</span>
+                <span style="border: 1px solid #238636; color: #238636; padding: 1px 6px; border-radius: 4px; font-size: 0.7rem;">#Maven-Init</span>
+                <span style="border: 1px solid #238636; color: #238636; padding: 1px 6px; border-radius: 4px; font-size: 0.7rem;">#SSH-Sync</span>
+            </div>
+        </a>
+
+        <div style="text-align: center; margin-top: 60px; color: #484f58;">
+            <p><i class="fas fa-spinner fa-spin"></i> 正在深度构建 Java 学生管理系统代码仓库...</p>
+        </div>
+
+        <div class="footer-note">
+            © 2026 yushenchuanmei.top | Powered by Cloudflare Pages<br>
+            已成功归档：<a href="https://firstweb.yushenchuanmei.top" style="color:#58a6ff;">日志-1 (JS篇)</a>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script>
+        let scene, camera, renderer, particles;
+        function init() {
+            scene = new THREE.Scene();
+            camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+            camera.position.z = 5;
+            renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            document.getElementById('canvas-container').appendChild(renderer.domElement);
+
+            const geometry = new THREE.BufferGeometry();
+            const vertices = [];
+            for (let i = 0; i < 2000; i++) {
+                vertices.push(THREE.MathUtils.randFloatSpread(15));
+                vertices.push(THREE.MathUtils.randFloatSpread(15));
+                vertices.push(THREE.MathUtils.randFloatSpread(15));
+            }
+            geometry.setAttribute('position', new THREE.Float32BufferAttribute(vertices, 3));
+            const material = new THREE.PointsMaterial({ color: 0xf85149, size: 0.025, transparent: true, opacity: 0.4 });
+            particles = new THREE.Points(geometry, material);
+            scene.add(particles);
+            window.addEventListener('resize', () => {
+                camera.aspect = window.innerWidth / window.innerHeight;
+                camera.updateProjectionMatrix();
+                renderer.setSize(window.innerWidth, window.innerHeight);
+            });
+            animate();
+        }
+        function animate() {
+            requestAnimationFrame(animate);
+            particles.rotation.y += 0.0008;
+            particles.rotation.x += 0.0003;
+            renderer.render(scene, camera);
+        }
+        init();
+    </script>
+</body>
+</html>
