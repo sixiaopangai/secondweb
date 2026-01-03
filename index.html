@@ -46,14 +46,13 @@
             letter-spacing: 1px;
         }
 
-        /* 准备存放 Day 7.1 的容器 */
         .day-link { 
             display: block; 
             padding: 20px; 
             margin: 20px 0; 
             background: #161b22; 
             border: 1px solid #30363d; 
-            border-left: 5px solid #f85149; 
+            border-left: 5px solid #238636; 
             text-decoration: none; 
             color: #c9d1d9; 
             border-radius: 8px; 
@@ -67,7 +66,7 @@
             box-shadow: 0 0 20px rgba(248, 81, 73, 0.2);
         }
 
-        .day-title { font-weight: bold; font-size: 1.25em; display: block; color: #f85149; }
+        .day-title { font-weight: bold; font-size: 1.25em; display: block; color: #2ea043; }
         .day-desc { font-size: 0.95em; color: #8b949e; margin-top: 5px; }
 
         .type-badge {
@@ -96,23 +95,23 @@
     <div class="log-container">
         <h1>🚀 全栈开发学习日志-2 (Java学习篇)</h1>
         
-        <a href="day7.1.html" class="day-link" style="border-left: 5px solid #238636; background: rgba(35, 134, 54, 0.05);">
+        <a href="day7.1.html" class="day-link">
             <div style="display: flex; justify-content: space-between; align-items: flex-start;">
                 <div>
-                    <span class="type-badge" style="background: #238636;">
+                    <span class="type-badge">
                         <i class="fas fa-check-circle"></i> 已发布
                     </span>
-                    <span class="day-title" style="color: #2ea043;">Day 7.1：Java 全栈启航 - 双仓库建立与工程化初始化</span>
+                    <span class="day-title">Day 7.1：Java 全栈启航 - 仓库初始化与分支冲突避坑指南</span>
                 </div>
                 <span style="font-size: 0.8rem; color: #8b949e;">2026.01.03</span>
             </div>
             <span class="day-desc">
-                在 <b>Acer Predator</b> 上确立了展示站与代码站的“双轨并行”架构；完成了从 npm 到 Maven 的依赖思维转变，并通过 SSH 成功打通 GitHub 信任隧道。
+                在 <b>Acer Predator</b> 上确立了展示站与代码站的“双轨并行”架构；详细记录了<b>新建仓库 Git 初始化</b>的全过程代码，并攻克了 Git Bash (Master) 与 GitHub (Main) 之间的命名冲突难题。
             </span>
             <div style="margin-top: 10px;">
+                <span style="border: 1px solid #238636; color: #238636; padding: 1px 6px; border-radius: 4px; font-size: 0.7rem;">#Git-Init</span>
+                <span style="border: 1px solid #238636; color: #238636; padding: 1px 6px; border-radius: 4px; font-size: 0.7rem;">#Master-vs-Main</span>
                 <span style="border: 1px solid #238636; color: #238636; padding: 1px 6px; border-radius: 4px; font-size: 0.7rem;">#Architecture</span>
-                <span style="border: 1px solid #238636; color: #238636; padding: 1px 6px; border-radius: 4px; font-size: 0.7rem;">#Maven-Init</span>
-                <span style="border: 1px solid #238636; color: #238636; padding: 1px 6px; border-radius: 4px; font-size: 0.7rem;">#SSH-Sync</span>
             </div>
         </a>
 
@@ -121,8 +120,8 @@
         </div>
 
         <div class="footer-note">
-            © 2026 yushenchuanmei.top | Powered by Cloudflare Pages<br>
-            已成功归档：<a href="https://firstweb.yushenchuanmei.top" style="color:#58a6ff;">日志-1 (JS篇)</a>
+            © 2026 yushenchuanmei.top | 托管于：<a href="https://secondweb.yushenchuanmei.top" style="color:#58a6ff;">secondweb</a><br>
+            已成功归档：<a href="https://firstweb.yushenchuanmei.top" style="color:#8b949e;">日志-1 (JS篇)</a>
         </div>
     </div>
 
@@ -158,7 +157,6 @@
         function animate() {
             requestAnimationFrame(animate);
             particles.rotation.y += 0.0008;
-            particles.rotation.x += 0.0003;
             renderer.render(scene, camera);
         }
         init();
