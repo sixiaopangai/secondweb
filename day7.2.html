@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day 7.2：工程化重构 - Spring Boot 4.0 项目创建与 Git 深度填坑</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root { --java-red: #f85149; --bg-dark: #0d1117; --card-dark: #161b22; --code-blue: #58a6ff; }
+        body { font-family: 'Segoe UI', 'PingFang SC', sans-serif; background: var(--bg-dark); color: #c9d1d9; line-height: 1.7; max-width: 900px; margin: 0 auto; padding: 40px 20px; }
+        .header { border-bottom: 2px solid var(--java-red); padding-bottom: 20px; margin-bottom: 40px; }
+        h1 { color: #f0f6fc; font-size: 1.8rem; }
+        h2 { color: var(--java-red); margin-top: 35px; border-left: 4px solid var(--java-red); padding-left: 15px; }
+        .info-card { background: var(--card-dark); border: 1px solid #30363d; padding: 25px; border-radius: 12px; margin: 20px 0; box-shadow: 0 4px 15px rgba(0,0,0,0.3); }
+        .command-box { background: #000; color: var(--code-blue); padding: 15px; border-radius: 8px; font-family: 'Fira Code', monospace; font-size: 0.85rem; border: 1px solid #30363d; margin: 15px 0; overflow-x: auto; }
+        .warning-box { background: rgba(248, 81, 73, 0.1); border-left: 4px solid var(--java-red); padding: 15px; margin: 20px 0; }
+        .badge { background: var(--java-red); color: white; padding: 3px 10px; border-radius: 4px; font-size: 0.8rem; font-weight: bold; }
+        .step-tag { display: inline-block; background: #238636; color: white; padding: 2px 8px; border-radius: 4px; font-size: 0.75rem; margin-right: 8px; }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Day 7.2：工程化重构 - Spring Boot 4.0 项目正式创建</h1>
+        <p><span class="badge">架构进化</span> 记录在 <b>Acer Predator</b> 上完成的仓库重命名、新仓库确立及项目初始化全过程。</p>
+    </div>
+
+    <div class="info-card">
+        <h2>1. 阵地迁移：旧仓库重命名</h2>
+        <p>为了规范技术栈标识，正式将原 JavaScript 版学生管理系统更名，确立其作为“日志-1”的归档地位。</p>
+        <ul>
+            <li><b>旧名称</b>：student-management-system</li>
+            <li><b>新名称</b>：<code>student-management-system-JavaScript</code></li>
+        </ul>
+        <div class="command-box">
+            # 修改本地 SSH 远程关联<br>
+            git remote set-url origin git@github.com:sixiaopangai/student-management-system-JavaScript.git
+        </div>
+    </div>
+
+    <div class="info-card">
+        <h2>2. 仓库确立：新项目命名与远程创建</h2>
+        <p>确立 Java 学习阶段的核心生产力仓库，通过后缀明确区分开发栈。</p>
+        <ul>
+            <li><b>项目命名</b>：<code>student-management-system-Java</code></li>
+            <li><b>创建策略</b>：在 GitHub 网页端新建空仓库，暂不初始化 README。</li>
+            <li><b>本地衔接</b>：在 <b>Acer Predator</b> 的 <code>02_Active</code> 目录下执行 <code>git clone</code> 获取云端“集装箱”。</li>
+        </ul>
+        <div class="command-box">
+            # 克隆新创建的空仓库<br>
+            git clone git@github.com:sixiaopangai/student-management-system-Java.git
+        </div>
+    </div>
+
+    <div class="info-card">
+        <h2>3. 核心过程：Spring Boot 4.0 项目注入</h2>
+        <p>采用“原地生成”策略，利用 IntelliJ IDEA 的 Spring Initializr 为空仓库注入灵魂：</p>
+        <ul>
+            <li><b>环境规格</b>：JDK 17 + Spring Boot 4.0.1 + Maven。</li>
+            <li><b>依赖配置</b>：Spring Web, JPA, MySQL Driver, Lombok, DevTools。</li>
+            <li><b>逻辑</b>：覆盖生成后，利用原有 <code>.git</code> 目录直接实现云端同步。</li>
+        </ul>
+    </div>
+
+    <div class="info-card">
+        <h2>4. 填坑笔记：Git 环境深度实战</h2>
+        <div class="warning-box">
+            <strong>问题 A：git remote -v 没反应</strong><br>
+            <b>修复</b>：IDEA 初始化时重置了配置，需重新执行 <code>git remote add origin...</code>
+        </div>
+        <div class="warning-box">
+            <strong>问题 B：换行符警告 (LF vs CRLF)</strong><br>
+            <b>解决</b>：开启 <code>core.autocrlf true</code> 实现跨平台格式自动转换。
+        </div>
+    </div>
+
+    <p style="text-align: center;"><a href="index.html" style="color: var(--java-red); text-decoration: none;">← 返回日志首页</a></p>
+</body>
+</html>
