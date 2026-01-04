@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Git 核心指令速查手册 - 全栈开发必备</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root { --git-orange: #f05032; --bg-dark: #0d1117; --card-dark: #161b22; --code-blue: #58a6ff; }
+        body { font-family: 'Segoe UI', 'PingFang SC', sans-serif; background: var(--bg-dark); color: #c9d1d9; line-height: 1.7; max-width: 900px; margin: 0 auto; padding: 40px 20px; }
+        .header { border-bottom: 2px solid var(--git-orange); padding-bottom: 20px; margin-bottom: 40px; text-align: center; }
+        h1 { color: #f0f6fc; font-size: 2rem; }
+        h2 { color: var(--git-orange); margin-top: 35px; border-left: 4px solid var(--git-orange); padding-left: 15px; }
+        .info-card { background: var(--card-dark); border: 1px solid #30363d; padding: 25px; border-radius: 12px; margin: 20px 0; }
+        .command-item { margin-bottom: 20px; }
+        .command-item b { color: #f0f6fc; display: block; margin-bottom: 5px; }
+        .command-box { background: #000; color: var(--code-blue); padding: 12px; border-radius: 8px; font-family: 'Fira Code', monospace; font-size: 0.9rem; border: 1px solid #30363d; display: block; margin-bottom: 8px; }
+        .badge { background: #238636; color: white; padding: 2px 8px; border-radius: 4px; font-size: 0.75rem; vertical-align: middle; }
+        .badge-warn { background: #d29922; }
+        .badge-danger { background: #da3633; }
+        .badge-ssh { background: #8957e5; }
+        .badge-https { background: #1f6feb; }
+        .url-label { font-size: 0.8rem; color: #8b949e; margin-bottom: 3px; }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1><i class="fab fa-git-alt"></i> Git 核心指令速查手册</h1>
+        <p>整理自 <b>Acer Predator</b> 开发实战，涵盖从基础到深度填坑的所有指令。</p>
+    </div>
+
+    <div class="info-card">
+        <h2>1. 仓库初始化与获取</h2>
+        <div class="command-item">
+            <b>初始化本地新仓库</b>
+            <code class="command-box">git init</code>
+        </div>
+        <div class="command-item">
+            <b>克隆云端仓库</b>
+            <div class="url-label"><span class="badge badge-ssh">SSH</span> 推荐，需配置密钥</div>
+            <code class="command-box">git clone git@github.com:用户名/仓库名.git</code>
+            <div class="url-label"><span class="badge badge-https">HTTPS</span> 通用，需输入密码/Token</div>
+            <code class="command-box">git clone https://github.com/用户名/仓库名.git</code>
+        </div>
+        <div class="command-item">
+            <b>克隆指定分支</b>
+            <div class="url-label"><span class="badge badge-ssh">SSH</span></div>
+            <code class="command-box">git clone -b 分支名 git@github.com:用户名/仓库名.git</code>
+            <div class="url-label"><span class="badge badge-https">HTTPS</span></div>
+            <code class="command-box">git clone -b 分支名 https://github.com/用户名/仓库名.git</code>
+        </div>
+    </div>
+
+    <div class="info-card">
+        <h2>2. 提交工作流 (最常用)</h2>
+        <div class="command-item">
+            <b>查看当前状态 (检查哪些文件被修改)</b>
+            <code class="command-box">git status</code>
+        </div>
+        <div class="command-item">
+            <b>添加文件到暂存区 <span class="badge">所有文件</span></b>
+            <code class="command-box">git add .</code>
+        </div>
+        <div class="command-item">
+            <b>添加指定文件到暂存区</b>
+            <code class="command-box">git add 文件名</code>
+        </div>
+        <div class="command-item">
+            <b>提交到本地仓库 (务必带上详细说明)</b>
+            <code class="command-box">git commit -m "feat: 描述你的改动"</code>
+        </div>
+        <div class="command-item">
+            <b>推送到云端</b>
+            <code class="command-box">git push origin main</code>
+        </div>
+        <div class="command-item">
+            <b>从云端拉取最新代码 <span class="badge">协作必备</span></b>
+            <code class="command-box">git pull origin main</code>
+        </div>
+    </div>
+
+    <div class="info-card">
+        <h2>3. 分支管理</h2>
+        <div class="command-item">
+            <b>查看所有分支 (本地)</b>
+            <code class="command-box">git branch</code>
+        </div>
+        <div class="command-item">
+            <b>查看所有分支 (包含远程)</b>
+            <code class="command-box">git branch -a</code>
+        </div>
+        <div class="command-item">
+            <b>创建新分支</b>
+            <code class="command-box">git branch 分支名</code>
+        </div>
+        <div class="command-item">
+            <b>切换分支</b>
+            <code class="command-box">git checkout 分支名</code>
+        </div>
+        <div class="command-item">
+            <b>创建并切换到新分支 <span class="badge">推荐</span></b>
+            <code class="command-box">git checkout -b 分支名</code>
+        </div>
+        <div class="command-item">
+            <b>合并分支到当前分支</b>
+            <code class="command-box">git merge 分支名</code>
+        </div>
+        <div class="command-item">
+            <b>删除本地分支</b>
+            <code class="command-box">git branch -d 分支名</code>
+        </div>
+        <div class="command-item">
+            <b>删除远程分支</b>
+            <code class="command-box">git push origin --delete 分支名</code>
+        </div>
+    </div>
+
+    <div class="info-card">
+        <h2>4. 远程仓库管理</h2>
+        <div class="command-item">
+            <b>查看当前关联的远程地址</b>
+            <code class="command-box">git remote -v</code>
+        </div>
+        <div class="command-item">
+            <b>关联远程仓库 (本地 init 后使用)</b>
+            <div class="url-label"><span class="badge badge-ssh">SSH</span></div>
+            <code class="command-box">git remote add origin git@github.com:用户名/仓库名.git</code>
+            <div class="url-label"><span class="badge badge-https">HTTPS</span></div>
+            <code class="command-box">git remote add origin https://github.com/用户名/仓库名.git</code>
+        </div>
+        <div class="command-item">
+            <b>修改现有远程地址 (如仓库重命名后)</b>
+            <div class="url-label"><span class="badge badge-ssh">SSH</span></div>
+            <code class="command-box">git remote set-url origin git@github.com:用户名/新仓库名.git</code>
+            <div class="url-label"><span class="badge badge-https">HTTPS</span></div>
+            <code class="command-box">git remote set-url origin https://github.com/用户名/新仓库名.git</code>
+        </div>
+        <div class="command-item">
+            <b>获取远程仓库更新 (不合并)</b>
+            <code class="command-box">git fetch origin</code>
+        </div>
+        <div class="command-item">
+            <b>删除远程仓库关联</b>
+            <code class="command-box">git remote remove origin</code>
+        </div>
+    </div>
+
+    <div class="info-card">
+        <h2>5. 查看历史与差异</h2>
+        <div class="command-item">
+            <b>查看提交历史</b>
+            <code class="command-box">git log</code>
+        </div>
+        <div class="command-item">
+            <b>查看简洁提交历史 <span class="badge">推荐</span></b>
+            <code class="command-box">git log --oneline</code>
+        </div>
+        <div class="command-item">
+            <b>查看图形化分支历史</b>
+            <code class="command-box">git log --oneline --graph --all</code>
+        </div>
+        <div class="command-item">
+            <b>查看文件修改差异 (未暂存)</b>
+            <code class="command-box">git diff</code>
+        </div>
+        <div class="command-item">
+            <b>查看已暂存的差异</b>
+            <code class="command-box">git diff --staged</code>
+        </div>
+    </div>
+
+    <div class="info-card">
+        <h2>6. 撤销与回退 <span class="badge badge-warn">谨慎操作</span></h2>
+        <div class="command-item">
+            <b>撤销工作区修改 (未 add)</b>
+            <code class="command-box">git checkout -- 文件名</code>
+        </div>
+        <div class="command-item">
+            <b>撤销暂存区 (已 add，未 commit)</b>
+            <code class="command-box">git reset HEAD 文件名</code>
+        </div>
+        <div class="command-item">
+            <b>回退到上一次提交 (保留修改)</b>
+            <code class="command-box">git reset --soft HEAD^</code>
+        </div>
+        <div class="command-item">
+            <b>回退到指定提交 <span class="badge badge-danger">危险</span></b>
+            <code class="command-box">git reset --hard 提交ID</code>
+        </div>
+        <div class="command-item">
+            <b>修改最后一次提交信息</b>
+            <code class="command-box">git commit --amend -m "新的提交信息"</code>
+        </div>
+    </div>
+
+    <div class="info-card">
+        <h2>7. 暂存工作区 (Stash)</h2>
+        <div class="command-item">
+            <b>暂存当前修改 (切换分支前)</b>
+            <code class="command-box">git stash</code>
+        </div>
+        <div class="command-item">
+            <b>查看暂存列表</b>
+            <code class="command-box">git stash list</code>
+        </div>
+        <div class="command-item">
+            <b>恢复最近的暂存</b>
+            <code class="command-box">git stash pop</code>
+        </div>
+        <div class="command-item">
+            <b>恢复指定暂存</b>
+            <code class="command-box">git stash apply stash@{0}</code>
+        </div>
+    </div>
+
+    <div class="info-card">
+        <h2>8. 深度填坑 (实战经验)</h2>
+        <div class="command-item">
+            <b>强制修正主分支名为 main (解决 Master 冲突)</b>
+            <code class="command-box">git branch -M main</code>
+        </div>
+        <div class="command-item">
+            <b>解决 LF/CRLF 换行符警告</b>
+            <code class="command-box">git config --global core.autocrlf true</code>
+        </div>
+        <div class="command-item">
+            <b>首次推送并设置上游分支</b>
+            <code class="command-box">git push -u origin main</code>
+        </div>
+        <div class="command-item">
+            <b>强制推送 (覆盖远程) <span class="badge badge-danger">危险</span></b>
+            <code class="command-box">git push -f origin main</code>
+        </div>
+        <div class="command-item">
+            <b>设置全局用户名</b>
+            <code class="command-box">git config --global user.name "你的名字"</code>
+        </div>
+        <div class="command-item">
+            <b>设置全局邮箱</b>
+            <code class="command-box">git config --global user.email "你的邮箱"</code>
+        </div>
+        <div class="command-item">
+            <b>查看所有配置</b>
+            <code class="command-box">git config --list</code>
+        </div>
+        <div class="command-item">
+            <b>忽略文件权限变化</b>
+            <code class="command-box">git config core.fileMode false</code>
+        </div>
+    </div>
+
+    <p style="text-align: center;"><a href="index.html" style="color: var(--git-orange); text-decoration: none;">← 返回学习日志首页</a></p>
+</body>
+</html>
